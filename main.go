@@ -12,6 +12,8 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
+const version = "unknown"
+
 // 定义一个简单的处理函数
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, DBT Portal!")
