@@ -1,0 +1,55 @@
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略编辑器和IDE生成的文件
+*.swp
+*.swo
+*.bak
+*.class
+*.iml
+*.log
+*.sublime-project
+*.sublime-workspace
+*.pyc
+*.sw?
+.nbproject/
+.project
+.settings/
+.idea/
+.vscode/
+
+# 忽略构建工具生成的文件
+bin/
+obj/
+build/
+dist/
+out/
+target/
+
+# 忽略Go相关文件
+*.exe
+*.test
+*.a
+*.cache
+*.out
+*.so
+*.syso
+*. race
+ coverage.txt
+ profile.pprof
+
+# 忽略依赖管理工具生成的文件
+vendor/
+
+# 忽略日志文件和临时文件
+logs/
+*.log
+tmp/
+*.tmp
+
+# 忽略测试输出
+coverage/
+
+# 忽略测试文件
+*.http
