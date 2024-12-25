@@ -3,10 +3,8 @@ package main
 import (
 	"log"
 	"os"
-	"os/signal"
 	"slices"
 	"sync"
-	"syscall"
 
 	"github.com/fsnotify/fsnotify"
 	"gopkg.in/yaml.v3"
@@ -61,17 +59,16 @@ func LoadConfig(filename string, method string) error {
 				if !ok {
 					return
 				}
-				if event.Op&fsnotify.Write != fsnotify.Write {
-					continue
-				}
-				switch method {
-				case "auto":
-					log.Println("配置文件已修改，重新加载配置...")
-					if err := reloadConfig(filename); err != nil {
-						log.Println("重新加载配置失败:", err)
+				if event.Op&fsnotify.Write == fsnotify.Write {
+					switch method {
+					case "auto":
+						log.Println("配置文件已修改，重新加载配置...")
+						if err := reloadConfig(filename); err != nil {
+							log.Println("重新加载配置失败:", err)
+						}
+					case "signal":
+						log.Println("配置文件已修改...")
 					}
-				case "signal":
-					log.Println("配置文件已修改...")
 				}
 			case err, ok := <-watcher.Errors:
 				if !ok {
@@ -83,10 +80,6 @@ func LoadConfig(filename string, method string) error {
 	}()
 
 	if method == "signal" {
-		// 监听信号
-		signalChan := make(chan os.Signal, 1)
-		signal.Notify(signalChan, syscall.SIGHUP, syscall.SIGUSR1)
-
 		go func() {
 			for {
 				select {
