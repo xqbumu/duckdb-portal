@@ -33,5 +33,12 @@ DuckDB Portal 是一个基于DuckDB的Web界面工具，旨在简化数据库管
 欢迎提交问题和Pull Request！
 
 // 添加 GitHub Actions 使用 goreleaser
+
 ## GitHub Actions
 我们使用 GitHub Actions 来自动化版本发布流程。具体配置文件位于 `.github/workflows/release.yml`。
+
+## 感谢
+
+感谢以下商家提供白嫖机器
+
+[![DartNode](https://github.com/xqbumu/duckdb-portal/blob/assets/DartNode.png?raw=true)](https://dartnode.com/)
