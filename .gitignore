@@ -53,3 +53,6 @@ coverage/
 
 # 忽略测试文件
 *.http
+portal
+duckdb-portal
+config.yaml

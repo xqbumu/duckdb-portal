@@ -20,6 +20,8 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// 配置重载方案
+	method := flag.String("method", "auto", "config reload method: auto/signal")
 	// 定义一个端口参数，默认为8080
 	port := flag.String("port", "8080", "HTTP server port")
 	// 添加config参数
@@ -27,7 +29,7 @@ func main() {
 	flag.Parse()
 
 	// 加载配置文件
-	if err := LoadConfig(*configPath); err != nil && !errors.Is(err, os.ErrNotExist) {
+	if err := LoadConfig(*configPath, *method); err != nil && !errors.Is(err, os.ErrNotExist) {
 		log.Panicf("Failed to load config: %v\n", err)
 		return
 	}
