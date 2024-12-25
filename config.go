@@ -81,13 +81,10 @@ func LoadConfig(filename string, method string) error {
 
 	if method == "signal" {
 		go func() {
-			for {
-				select {
-				case sig := <-signalChan:
-					log.Printf("接收到信号 %v，重新加载配置...", sig)
-					if err := reloadConfig(filename); err != nil {
-						log.Println("重新加载配置失败:", err)
-					}
+			for sig := range signalChan {
+				log.Printf("接收到信号 %v, 重新加载配置...", sig)
+				if err := reloadConfig(filename); err != nil {
+					log.Println("重新加载配置失败:", err)
 				}
 			}
 		}()

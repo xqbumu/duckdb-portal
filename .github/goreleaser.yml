@@ -1,5 +1,7 @@
 # test this file with
 #   goreleaser --skip-publish --rm-dist --config goreleaser.yml
+version: 2
+
 builds:
   - env:
       - CGO_ENABLED=0

@@ -26,7 +26,16 @@ func main() {
 	port := flag.String("port", "8080", "HTTP server port")
 	// 添加config参数
 	configPath := flag.String("config", "config.yaml", "Path to config file")
+	// 添加version参数
+	showVersion := flag.Bool("version", false, "Show version information")
+
 	flag.Parse()
+
+	// 检查是否需要显示版本信息
+	if *showVersion {
+		fmt.Printf("DBT Portal version: %s\n", version)
+		return
+	}
 
 	// 加载配置文件
 	if err := LoadConfig(*configPath, *method); err != nil && !errors.Is(err, os.ErrNotExist) {
