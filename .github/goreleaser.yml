@@ -14,17 +14,7 @@ builds:
       - windows
     goarch:
       - amd64
-      - arm
       - arm64
-    goarm:
-      - '6'
-      - '7'
-nfpms:
-  - maintainer: "https://github.com/{{ .Env.GITHUB_USER }}"
-    formats:
-      - deb
-      - rpm
-      - apk
 archives:
   - format: gz
     files:
