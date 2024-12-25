@@ -16,7 +16,7 @@ const version = "unknown"
 
 // 定义一个简单的处理函数
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, DBT Portal!")
+	fmt.Fprintf(w, "Hello, DuckDB Portal!")
 }
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 
 	// 检查是否需要显示版本信息
 	if *showVersion {
-		fmt.Printf("DBT Portal version: %s\n", version)
+		fmt.Printf("DuckDB Portal version: %s\n", version)
 		return
 	}
 
